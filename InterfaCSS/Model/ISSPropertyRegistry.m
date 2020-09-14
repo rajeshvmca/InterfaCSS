@@ -17,6 +17,7 @@
 #import "ISSUIElementDetails.h"
 #import "ISSRuntimeIntrospectionUtils.h"
 
+@import WebKit;
 
 #define S(selName) NSStringFromSelector(@selector(selName))
 #define SLC(selName) [S(selName) lowercaseString]
@@ -887,7 +888,7 @@ static void createSegmentIfNeeded(UISegmentedControl* segmentedControl, NSUInteg
     allProperties = [allProperties setByAddingObjectsFromSet:tableViewProperties];
 
 
-#pragma mark - UIWebView
+#pragma mark - WKWebview
     
 #if TARGET_OS_TV == 0
     NSDictionary* dataDetectorTypesValues = @{@"all" : @(UIDataDetectorTypeAll), @"none" : @(UIDataDetectorTypeNone), @"address" : @(UIDataDetectorTypeAddress),
@@ -1475,7 +1476,7 @@ static void createSegmentIfNeeded(UISegmentedControl* segmentedControl, NSUInteg
             resistanceIsFutile UIScrollView.class : scrollViewProperties,
             resistanceIsFutile UITableView.class : tableViewProperties,
 #if TARGET_OS_TV == 0
-            resistanceIsFutile UIWebView.class : webViewProperties,
+            resistanceIsFutile WKWebView.class : webViewProperties,
 #endif
             resistanceIsFutile UITableViewCell.class : tableViewCellProperties,
             resistanceIsFutile UICollectionView.class : collectionViewProperties,
